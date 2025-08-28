@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://127.0.0.1:5501/wfc.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Positioning Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      border: 2px solid black;
+      padding: 20px;
+      margin: 40px 0;
+      min-height: 60px;
+    }
+
+    /* Relative */
+    .relative {
+      position: relative;
+      left: 40px;
+      top: 10px;
+    }
+
+    /* Absolute (inside relative container) */
+    .absolute-container {
+      position: relative;
+      border: 2px solid black;
+      padding: 20px;
+      height: 120px;
+      margin: 40px 0;
+    }
+    .absolute {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: 1px dashed black;
+      padding: 10px;
+    }
+
+    /* Sticky */
+    .sticky {
+      position: sticky;
+      top: 0;
+      border: 2px dashed black;
+      padding: 15px;
+    }
+
+    /* Fixed */
+    .fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    .spacer {
+      height: 800px; /* for scroll */
+    }
+  </style>
+</head>
+<body>
+  <h2>Positioning Demo</h2>
+
+  <div class="box relative">
+    Relative – shifted 40px right &amp; 10px down
+  </div>
+
+  <div class="absolute-container">
+    Absolute container (relative parent)
+    <div class="absolute">
+      Absolute – placed at top-right of parent
+    </div>
+  </div>
+
+  <div class="box sticky">
+    Sticky – sticks to the top when scrolling
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="fixed">
+    Fixed – always pinned bottom-right
+  </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
